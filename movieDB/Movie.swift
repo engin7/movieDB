@@ -16,18 +16,19 @@ struct ResultArray:  Codable {
 
 struct Movie: Codable {
     
-    var title         = ""
-    var overview      = ""
-    var release_date  = ""
-    var imagePath     = ""
-    var averageVote   = 0.0
-    var popularity    = 0.0
-    var vote_count    = 0.0
-    var id            = 0
-    
+    var title                = ""
+    var overview             = ""
+    var release_date         = ""
+    var posterImagePath      = ""
+    var averageVote          = 0.0
+    var popularity           = 0.0
+    var vote_count           = 0.0
+    var id                   = 0
+    var backdropImagePath:   String?
     
     enum CodingKeys: String, CodingKey {
-        case imagePath = "poster_path"
+        case posterImagePath = "poster_path"
+        case backdropImagePath = "backdrop_path"
         case averageVote = "vote_average"
         case title, overview, release_date
         case popularity, vote_count, id

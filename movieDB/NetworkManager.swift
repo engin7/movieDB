@@ -16,8 +16,11 @@ static let shared = NetworkManager() // singleton
 private var apiKey: String?
 private let baseURL = "https://api.themoviedb.org/3/search/movie"
 private let upcomingURL = "https://api.themoviedb.org/3/movie/upcoming"
- 
+private let nowplayingURL = "https://api.themoviedb.org/3/movie/now_playing"
+
+    
 var upcomingMovies: [Movie] = []
+var nowplayingMovies:[Movie] = []
 private var dataTask: URLSessionDataTask? = nil
 
  
@@ -41,6 +44,20 @@ private var dataTask: URLSessionDataTask? = nil
         completion(true)
     }
     
+    }
+    
+    func nowplayingMovies(completion: @escaping SearchComplete) {
+    
+        let url = nowplayingURL + "?api_key=" + apiKey! + "&language=en-US&page=&page=1"
+
+             AF.request(url)
+         .validate()
+         .responseDecodable(of: ResultArray.self) { (response) in
+           guard let films = response.value else { return }
+             self.nowplayingMovies =  films.results
+             completion(true)
+         }
+        
     }
 
 }

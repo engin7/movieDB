@@ -57,21 +57,32 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="suE-8t-q10">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLz-cc-DQN">
-                                                    <rect key="frame" x="166.5" y="205" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <rect key="frame" x="163.5" y="202" width="48" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
+                                                    <size key="shadowOffset" width="4" height="-4"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="suE-8t-q10" secondAttribute="bottom" id="2h6-mf-rSO"/>
+                                                <constraint firstAttribute="trailing" secondItem="suE-8t-q10" secondAttribute="trailing" id="Iyz-Ba-KND"/>
                                                 <constraint firstAttribute="bottom" secondItem="eLz-cc-DQN" secondAttribute="bottom" constant="24" id="K6n-Ik-8la"/>
                                                 <constraint firstItem="eLz-cc-DQN" firstAttribute="centerX" secondItem="A3i-t1-q3a" secondAttribute="centerX" id="LdD-gu-vyr"/>
+                                                <constraint firstItem="suE-8t-q10" firstAttribute="top" secondItem="A3i-t1-q3a" secondAttribute="top" id="NbN-lD-Yfe"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="eLz-cc-DQN" secondAttribute="trailing" constant="8" id="Xq1-K5-c54"/>
+                                                <constraint firstItem="suE-8t-q10" firstAttribute="leading" secondItem="A3i-t1-q3a" secondAttribute="leading" id="d3Z-Zr-rIP"/>
                                                 <constraint firstItem="eLz-cc-DQN" firstAttribute="centerX" secondItem="A3i-t1-q3a" secondAttribute="centerX" id="iX0-IX-WXT"/>
+                                                <constraint firstItem="eLz-cc-DQN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="A3i-t1-q3a" secondAttribute="leading" constant="8" id="tuT-JU-VhC"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="375" height="250"/>
                                         <connections>
+                                            <outlet property="image" destination="suE-8t-q10" id="hAj-Cz-rNM"/>
                                             <outlet property="title" destination="eLz-cc-DQN" id="0fk-WT-2rH"/>
                                         </connections>
                                     </collectionViewCell>

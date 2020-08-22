@@ -15,9 +15,7 @@ import UIKit
 class ListViewController: UIViewController, UICollectionViewDelegate {
 
     @IBOutlet weak var upcomingMovies: UITableView!
-    
     @IBOutlet weak var nowPlayingMovies: UICollectionView!
-    
     @IBOutlet weak var dots: UIPageControl!
     
     private let tableViewDataSource = UpcomingMoviesDataSource()
@@ -38,11 +36,17 @@ class ListViewController: UIViewController, UICollectionViewDelegate {
         network.upcomingMovies(completion: {success in
             if success {
                 self.upcomingMovies.reloadData()
-                self.nowPlayingMovies.reloadData()
                 //change to nowplaying
-                self.dots.numberOfPages = self.network.upcomingMovies.count
              }
         })
+        
+        network.nowplayingMovies(completion: {success in
+                   if success {
+                        self.nowPlayingMovies.reloadData()
+                       self.dots.numberOfPages = self.network.nowplayingMovies.count
+                    }
+               })
+        
 
     }
 
