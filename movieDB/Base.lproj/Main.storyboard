@@ -37,7 +37,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="X8s-Mg-Ci0"/>
                                 </connections>
                             </tableView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HsT-fx-41r">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HsT-fx-41r">
                                 <rect key="frame" x="0.0" y="56" width="375" height="250"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -67,6 +67,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="eLz-cc-DQN" secondAttribute="bottom" constant="24" id="K6n-Ik-8la"/>
                                                 <constraint firstItem="eLz-cc-DQN" firstAttribute="centerX" secondItem="A3i-t1-q3a" secondAttribute="centerX" id="LdD-gu-vyr"/>
+                                                <constraint firstItem="eLz-cc-DQN" firstAttribute="centerX" secondItem="A3i-t1-q3a" secondAttribute="centerX" id="iX0-IX-WXT"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="375" height="250"/>
@@ -101,6 +102,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="dots" destination="O8w-uA-MCj" id="ze4-xm-Jxa"/>
                         <outlet property="nowPlayingMovies" destination="HsT-fx-41r" id="Kbv-ti-K2R"/>
                         <outlet property="upcomingMovies" destination="WsD-Ob-Rv5" id="dQX-xY-6II"/>
                     </connections>

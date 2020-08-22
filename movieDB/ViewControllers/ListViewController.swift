@@ -12,11 +12,13 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
+class ListViewController: UIViewController, UICollectionViewDelegate {
 
     @IBOutlet weak var upcomingMovies: UITableView!
     
     @IBOutlet weak var nowPlayingMovies: UICollectionView!
+    
+    @IBOutlet weak var dots: UIPageControl!
     
     private let tableViewDataSource = UpcomingMoviesDataSource()
     private let collectionViewDataSource = NowPlayingDataSource()
@@ -30,17 +32,26 @@ class ListViewController: UIViewController {
         upcomingMovies.dataSource =  tableViewDataSource
         nowPlayingMovies.dataSource = collectionViewDataSource
         
-        
+        dots.pageIndicatorTintColor = .systemGray5
+        dots.currentPageIndicatorTintColor = .blue
+
         network.upcomingMovies(completion: {success in
             if success {
                 self.upcomingMovies.reloadData()
                 self.nowPlayingMovies.reloadData()
-
+                //change to nowplaying
+                self.dots.numberOfPages = self.network.upcomingMovies.count
              }
         })
 
     }
 
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        dots.currentPage = Int(
+            (nowPlayingMovies.contentOffset.x / nowPlayingMovies.frame.width)
+            .rounded(.toNearestOrAwayFromZero)
+        )
+    }
     
     
 }
