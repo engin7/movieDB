@@ -17,14 +17,11 @@ private var apiKey: String?
 private let baseURL = "https://api.themoviedb.org/3/search/movie"
 private let upcomingURL = "https://api.themoviedb.org/3/movie/upcoming"
 private let nowplayingURL = "https://api.themoviedb.org/3/movie/now_playing"
-
     
 var upcomingMovies: [Movie] = []
 var nowplayingMovies:[Movie] = []
-private var dataTask: URLSessionDataTask? = nil
+var searchedMovies:[Movie] = []
 
- 
- 
     typealias SearchComplete = (Bool) -> Void
  
     func upcomingMovies(completion: @escaping SearchComplete) {
@@ -57,7 +54,20 @@ private var dataTask: URLSessionDataTask? = nil
              self.nowplayingMovies =  films.results
              completion(true)
          }
-        
     }
-
+    
+    func performSearch(searchText: String,completion: @escaping SearchComplete) {
+       
+            let url = baseURL + "?api_key=" + apiKey! + "&language=en-US&query=" + searchText + "&page=1&include_adult=false"
+            
+                AF.request(url)
+            .validate()
+            .responseDecodable(of: ResultArray.self) { (response) in
+              guard let films = response.value else { return }
+                self.searchedMovies =  films.results
+                completion(true)
+            }
+           
+       }
+    
 }

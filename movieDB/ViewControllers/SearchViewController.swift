@@ -11,4 +11,35 @@
 //* User can go to the detail of the movie.
 
 
-import Foundation
+import UIKit
+
+protocol SearchViewControllerDelegate: class {
+  func search()
+}
+
+class SearchViewController: UITableViewController {
+    
+     weak var delegate: SearchViewControllerDelegate?
+    
+  
+    
+    override func viewDidLoad() {
+      super.viewDidLoad()
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return NetworkManager.shared.searchedMovies.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      if
+        let cell = tableView.dequeueReusableCell(withIdentifier: "results", for: indexPath) as? UpcomingMoviesTableViewCell {
+        cell.textLabel?.text = NetworkManager.shared.searchedMovies[indexPath.row].title
+        
+        return cell
+      }
+      return UITableViewCell()
+    }
+    
+ 
+}
