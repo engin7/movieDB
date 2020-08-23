@@ -36,8 +36,7 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UITableVie
         network.upcomingMovies(completion: {success in
             if success {
                 self.upcomingMovies.reloadData()
-                //change to nowplaying
-            }
+             }
         })
         
         network.nowplayingMovies(completion: {success in
@@ -69,11 +68,20 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UITableVie
         )
     }
     
+ 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let nowPlaying = network.nowplayingMovies[indexPath.row]
-        let vc = MovieDetailViewController(movie: nowPlaying)
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as! MovieDetailViewController
+ 
+        network.getMovieById(movie: nowPlaying, completion: {success in
+                       if success {
+                        vc.movie = self.network.movieById!
+                        self.navigationController?.pushViewController(vc, animated: true)
+                        
+                       }
+                   })
 
     }
     
@@ -81,8 +89,8 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UITableVie
            
            tableView.deselectRow(at: indexPath, animated: true)
            let result = NetworkManager.shared.upcomingMovies[indexPath.row]
-           let vc = MovieDetailViewController(movie: result)
-           self.navigationController?.pushViewController(vc, animated: true)
+        var vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as! MovieDetailViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     
        }
     

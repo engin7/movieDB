@@ -43,7 +43,7 @@ class SearchViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        let result = NetworkManager.shared.searchedMovies[indexPath.row]
-       let vc = MovieDetailViewController(movie: result)
+        var vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as! MovieDetailViewController
         delegate?.pushVC(vc: vc)
     }
     

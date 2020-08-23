@@ -14,24 +14,31 @@
 import UIKit
 
 class MovieDetailViewController: UIViewController {
-    
-    var movie  : Movie
-    let movieID: Int
-    
-    init(movie: Movie) {
-        self.movie   =  movie
-        self.movieID = movie.id
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+   
+    private let network = NetworkManager.shared
+    var movie  : Movie?
+
+    @IBOutlet weak var overview: UITextView!
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var rating: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
+   
+ 
+     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = movie.title
+        self.title = movie?.title
         self.view.backgroundColor = .white
+        self.overview.text = movie?.overview
+        
+        if movie != nil {
+            rating.text = String(movie!.averageVote)
+            let imageURL = URL(string: "http://image.tmdb.org/t/p/w500" + (movie!.posterImagePath))
+            self.image.kf.setImage(with: imageURL)
+        }
+ 
+        
     }
     
 }
+

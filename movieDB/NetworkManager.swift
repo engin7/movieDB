@@ -15,13 +15,15 @@ static let shared = NetworkManager() // singleton
 
 private var apiKey: String?
 private let baseURL = "https://api.themoviedb.org/3/search/movie"
+private let byIdURL = "https://api.themoviedb.org/3/movie"
 private let upcomingURL = "https://api.themoviedb.org/3/movie/upcoming"
 private let nowplayingURL = "https://api.themoviedb.org/3/movie/now_playing"
     
 var upcomingMovies: [Movie] = []
 var nowplayingMovies:[Movie] = []
 var searchedMovies:[Movie] = []
-
+var movieById:Movie?
+    
     typealias SearchComplete = (Bool) -> Void
  
     func upcomingMovies(completion: @escaping SearchComplete) {
@@ -69,5 +71,20 @@ var searchedMovies:[Movie] = []
             }
            
        }
+    
+    func getMovieById(movie: Movie,completion: @escaping SearchComplete) {
+        
+        let api = "?api_key=" + apiKey! + "&language=en-US"
+        let url = byIdURL + "/" + String(movie.id) + api
+        
+        AF.request(url)
+        .validate()
+        .responseDecodable(of: Movie.self) { (response) in
+          guard let film = response.value else { return }
+            self.movieById = film
+            completion(true)
+        }
+        
+    }
     
 }

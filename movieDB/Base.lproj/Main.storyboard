@@ -151,7 +151,7 @@
         <!--Movie Detail View Controller-->
         <scene sceneID="2lq-xa-8iW">
             <objects>
-                <viewController id="G5H-2O-0Nm" customClass="MovieDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailVC" id="G5H-2O-0Nm" customClass="MovieDetailViewController" customModule="movieDB" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Xl-lk-wMi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -235,6 +235,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="24I-OZ-pyj"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="iG0-dP-z3k" id="dfl-7w-dkO"/>
+                        <outlet property="image" destination="r4w-Hf-60t" id="JnB-vq-z4G"/>
+                        <outlet property="overview" destination="Fj1-vw-eix" id="ALS-Iq-asH"/>
+                        <outlet property="rating" destination="Wj4-Hs-XBW" id="h2A-RX-lsZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wAX-F7-kPe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
