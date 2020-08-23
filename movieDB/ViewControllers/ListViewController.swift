@@ -12,7 +12,7 @@
 
 import UIKit
 
-class ListViewController: UIViewController, UICollectionViewDelegate {
+class ListViewController: UIViewController, UICollectionViewDelegate, UITableViewDelegate {
 
     @IBOutlet weak var upcomingMovies: UITableView!
     @IBOutlet weak var nowPlayingMovies: UICollectionView!
@@ -55,12 +55,11 @@ class ListViewController: UIViewController, UICollectionViewDelegate {
 
         navigationItem.titleView = searchController.searchBar
         searchController.hidesNavigationBarDuringPresentation = false
-        self.definesPresentationContext = true
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search a movie"
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
-
+        self.definesPresentationContext = true
         
     }
 
@@ -70,6 +69,23 @@ class ListViewController: UIViewController, UICollectionViewDelegate {
             .rounded(.toNearestOrAwayFromZero)
         )
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        let nowPlaying = network.nowplayingMovies[indexPath.row]
+        let vc = MovieDetailViewController(movie: nowPlaying)
+        self.navigationController?.pushViewController(vc, animated: true)
+
+    }
+    
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+           
+           let result = NetworkManager.shared.upcomingMovies[indexPath.row]
+           let vc = MovieDetailViewController(movie: result)
+           searchController.isActive = false
+           self.navigationController?.pushViewController(vc, animated: true)
+    
+       }
     
     // MARK:- Helper Methods
      
