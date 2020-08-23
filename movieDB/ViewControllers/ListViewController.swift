@@ -50,7 +50,8 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UITableVie
         })
         
         resultsTableViewController = storyboard!.instantiateViewController(withIdentifier: "resultsViewController") as? SearchViewController
-        
+        resultsTableViewController.delegate = self
+
         searchController = UISearchController(searchResultsController: resultsTableViewController)
 
         navigationItem.titleView = searchController.searchBar
@@ -82,7 +83,6 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UITableVie
            
            let result = NetworkManager.shared.upcomingMovies[indexPath.row]
            let vc = MovieDetailViewController(movie: result)
-           searchController.isActive = false
            self.navigationController?.pushViewController(vc, animated: true)
     
        }
@@ -130,4 +130,8 @@ extension ListViewController: UISearchResultsUpdating {
     }
 }
 
- 
+extension ListViewController: SearchViewControllerDelegate {
+func pushVC(vc: UIViewController) {
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}

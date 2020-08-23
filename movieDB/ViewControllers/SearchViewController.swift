@@ -13,10 +13,14 @@
 
 import UIKit
 
- 
+protocol SearchViewControllerDelegate: class {
+    func pushVC(vc: UIViewController)
+}
+
 class SearchViewController: UITableViewController {
      
-    
+    weak var delegate: SearchViewControllerDelegate?
+
     override func viewDidLoad() {
       super.viewDidLoad()
 
@@ -37,5 +41,10 @@ class SearchViewController: UITableViewController {
       return UITableViewCell()
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       let result = NetworkManager.shared.searchedMovies[indexPath.row]
+       let vc = MovieDetailViewController(movie: result)
+        delegate?.pushVC(vc: vc)
+    }
     
 }
