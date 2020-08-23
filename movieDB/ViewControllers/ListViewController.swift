@@ -32,9 +32,7 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UITableVie
         upcomingMovies.dataSource =  tableViewDataSource
         nowPlayingMovies.dataSource = collectionViewDataSource
         
-        dots.pageIndicatorTintColor = .darkGray
-        dots.currentPageIndicatorTintColor = .white
- 
+         
         network.upcomingMovies(completion: {success in
             if success {
                 self.upcomingMovies.reloadData()

@@ -16,26 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="O8w-uA-MCj">
-                                <rect key="frame" x="168" y="259" width="39" height="37"/>
-                            </pageControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WsD-Ob-Rv5" userLabel="upcomingTableView">
-                                <rect key="frame" x="0.0" y="294" width="375" height="373"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="LL1-bV-r0g" customClass="UpcomingMoviesTableViewCell" customModule="movieDB" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LL1-bV-r0g" id="pv8-8H-MfI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="X8s-Mg-Ci0"/>
-                                </connections>
-                            </tableView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HsT-fx-41r">
                                 <rect key="frame" x="0.0" y="44" width="375" height="250"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -92,16 +72,37 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="I0z-jb-Qkw"/>
                                 </connections>
                             </collectionView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WsD-Ob-Rv5" userLabel="upcomingTableView">
+                                <rect key="frame" x="0.0" y="294" width="375" height="373"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="LL1-bV-r0g" customClass="UpcomingMoviesTableViewCell" customModule="movieDB" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LL1-bV-r0g" id="pv8-8H-MfI">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="X8s-Mg-Ci0"/>
+                                </connections>
+                            </tableView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="bmL-oc-qAo">
+                                <rect key="frame" x="168" y="259" width="39" height="37"/>
+                                <color key="pageIndicatorTintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="WsD-Ob-Rv5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9h4-cc-RfG"/>
                             <constraint firstItem="HsT-fx-41r" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9mL-eM-uWv"/>
-                            <constraint firstItem="O8w-uA-MCj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bub-5l-Zhs"/>
+                            <constraint firstItem="bmL-oc-qAo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PAt-T0-dsR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HsT-fx-41r" secondAttribute="trailing" id="dsx-Oe-Cqy"/>
-                            <constraint firstItem="WsD-Ob-Rv5" firstAttribute="top" secondItem="O8w-uA-MCj" secondAttribute="bottom" constant="-2" id="lfg-l9-IxW"/>
                             <constraint firstItem="HsT-fx-41r" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rl7-4M-IUo"/>
                             <constraint firstItem="WsD-Ob-Rv5" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="s6s-mT-5Rh"/>
+                            <constraint firstItem="WsD-Ob-Rv5" firstAttribute="top" secondItem="bmL-oc-qAo" secondAttribute="bottom" constant="-2" id="s9O-J3-h28"/>
                             <constraint firstItem="WsD-Ob-Rv5" firstAttribute="top" secondItem="HsT-fx-41r" secondAttribute="bottom" id="uu7-0Y-vyw"/>
                             <constraint firstItem="WsD-Ob-Rv5" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="yVT-Xv-dVx"/>
                         </constraints>
@@ -109,7 +110,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="1LR-6q-okO"/>
                     <connections>
-                        <outlet property="dots" destination="O8w-uA-MCj" id="ze4-xm-Jxa"/>
+                        <outlet property="dots" destination="bmL-oc-qAo" id="EZx-L9-tFb"/>
                         <outlet property="nowPlayingMovies" destination="HsT-fx-41r" id="Kbv-ti-K2R"/>
                         <outlet property="upcomingMovies" destination="WsD-Ob-Rv5" id="dQX-xY-6II"/>
                     </connections>
