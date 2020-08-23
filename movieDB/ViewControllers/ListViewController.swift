@@ -34,7 +34,7 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UITableVie
         
         dots.pageIndicatorTintColor = .darkGray
         dots.currentPageIndicatorTintColor = .white
-
+ 
         network.upcomingMovies(completion: {success in
             if success {
                 self.upcomingMovies.reloadData()
@@ -72,7 +72,7 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UITableVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        
         let nowPlaying = network.nowplayingMovies[indexPath.row]
         let vc = MovieDetailViewController(movie: nowPlaying)
         self.navigationController?.pushViewController(vc, animated: true)
@@ -81,6 +81,7 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UITableVie
     
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
            
+           tableView.deselectRow(at: indexPath, animated: true)
            let result = NetworkManager.shared.upcomingMovies[indexPath.row]
            let vc = MovieDetailViewController(movie: result)
            self.navigationController?.pushViewController(vc, animated: true)

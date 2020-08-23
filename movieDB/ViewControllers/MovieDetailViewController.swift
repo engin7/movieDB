@@ -31,7 +31,7 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = movie.title
-
+        self.view.backgroundColor = .white
     }
     
 }
