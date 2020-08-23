@@ -21,7 +21,7 @@ class ListViewController: UIViewController, UICollectionViewDelegate {
     private let tableViewDataSource = UpcomingMoviesDataSource()
     private let collectionViewDataSource = NowPlayingDataSource()
     private let network = NetworkManager.shared
-      var searchController: UISearchController!
+    var searchController: UISearchController!
     private var resultsTableViewController: SearchViewController!
     
 
@@ -59,7 +59,8 @@ class ListViewController: UIViewController, UICollectionViewDelegate {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search a movie"
         searchController.searchBar.delegate = self
-        
+        searchController.searchResultsUpdater = self
+
         
     }
 
@@ -86,21 +87,31 @@ class ListViewController: UIViewController, UICollectionViewDelegate {
 
 extension ListViewController: UISearchBarDelegate {
  
-  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        network.performSearch(searchText: searchBar.text!, completion: {success in
+            
+            if !success {
+                self.showNetworkError()
+            } else {
+                self.resultsTableViewController.tableView.reloadData()
+            }
+        })
+    }
     
-    network.performSearch(searchText: searchBar.text!, completion: {success in
-    
-              if !success {
-                 self.showNetworkError()
-              }
-        self.resultsTableViewController.tableView.reloadData()
-               })
-  }
-  
   func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
     self.network.searchedMovies = []
   }
 }
 
+extension ListViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if searchController.searchBar.text!.count < 3 {
+            searchController.showsSearchResultsController = false
+        } else {
+            searchController.showsSearchResultsController = true
+        }
+    }
+}
 
  
