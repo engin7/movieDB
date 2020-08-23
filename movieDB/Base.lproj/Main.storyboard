@@ -186,8 +186,8 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ctq-YL-tSa">
-                                <rect key="frame" x="163.5" y="266" width="48" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ctq-YL-tSa">
+                                <rect key="frame" x="8" y="266" width="359" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -229,9 +229,11 @@
                             <constraint firstItem="r4w-Hf-60t" firstAttribute="trailing" secondItem="24I-OZ-pyj" secondAttribute="trailing" id="f44-be-meh"/>
                             <constraint firstItem="iG0-dP-z3k" firstAttribute="bottom" secondItem="24I-OZ-pyj" secondAttribute="bottom" id="fOw-8F-7Ml"/>
                             <constraint firstItem="Wj4-Hs-XBW" firstAttribute="top" secondItem="Fj1-vw-eix" secondAttribute="bottom" constant="16" id="iGs-ye-rcR"/>
+                            <constraint firstItem="24I-OZ-pyj" firstAttribute="trailing" secondItem="Ctq-YL-tSa" secondAttribute="trailing" constant="8" id="ijZ-os-wKb"/>
                             <constraint firstItem="r4w-Hf-60t" firstAttribute="top" secondItem="24I-OZ-pyj" secondAttribute="top" id="qEx-qq-kDi"/>
                             <constraint firstItem="r4w-Hf-60t" firstAttribute="leading" secondItem="24I-OZ-pyj" secondAttribute="leading" id="qj5-xM-mnw"/>
                             <constraint firstItem="Ctq-YL-tSa" firstAttribute="top" secondItem="r4w-Hf-60t" secondAttribute="bottom" constant="16" id="tVq-QI-FyB"/>
+                            <constraint firstItem="Ctq-YL-tSa" firstAttribute="leading" secondItem="24I-OZ-pyj" secondAttribute="leading" constant="8" id="thH-TH-eO5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="24I-OZ-pyj"/>
                     </view>
@@ -240,6 +242,7 @@
                         <outlet property="image" destination="r4w-Hf-60t" id="JnB-vq-z4G"/>
                         <outlet property="overview" destination="Fj1-vw-eix" id="ALS-Iq-asH"/>
                         <outlet property="rating" destination="Wj4-Hs-XBW" id="h2A-RX-lsZ"/>
+                        <outlet property="tagline" destination="Ctq-YL-tSa" id="ozP-A3-bhs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wAX-F7-kPe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

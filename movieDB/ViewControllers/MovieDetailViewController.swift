@@ -18,6 +18,7 @@ class MovieDetailViewController: UIViewController {
     private let network = NetworkManager.shared
     var movie  : Movie?
 
+    @IBOutlet weak var tagline: UILabel!
     @IBOutlet weak var overview: UITextView!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var rating: UILabel!
@@ -29,8 +30,10 @@ class MovieDetailViewController: UIViewController {
         super.viewDidLoad()
         self.title = movie?.title
         self.view.backgroundColor = .white
-        self.overview.text = movie?.overview
-        
+        overview.text = movie?.overview
+        tagline.text = movie?.tagline
+        tagline.adjustsFontSizeToFitWidth = true
+
         if movie != nil {
             rating.text = String(movie!.averageVote)
             let imageURL = URL(string: "http://image.tmdb.org/t/p/w500" + (movie!.posterImagePath))

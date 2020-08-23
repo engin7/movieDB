@@ -14,7 +14,7 @@
 import UIKit
 
 protocol SearchViewControllerDelegate: class {
-    func pushVC(vc: UIViewController)
+    func pushVC(result: Movie)
 }
 
 class SearchViewController: UITableViewController {
@@ -43,8 +43,7 @@ class SearchViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        let result = NetworkManager.shared.searchedMovies[indexPath.row]
-        var vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as! MovieDetailViewController
-        delegate?.pushVC(vc: vc)
+        delegate?.pushVC(result: result)
     }
     
 }

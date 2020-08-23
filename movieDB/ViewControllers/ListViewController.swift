@@ -85,13 +85,20 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UITableVie
 
     }
     
-     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-           
-           tableView.deselectRow(at: indexPath, animated: true)
-           let result = NetworkManager.shared.upcomingMovies[indexPath.row]
-        var vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as! MovieDetailViewController
-        self.navigationController?.pushViewController(vc, animated: true)
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        let result = NetworkManager.shared.upcomingMovies[indexPath.row]
+        let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as! MovieDetailViewController
+        
+        network.getMovieById(movie: result, completion: {success in
+            if success {
+                vc.movie = self.network.movieById!
+                self.navigationController?.pushViewController(vc, animated: true)
+                
+            }
+        })
+        
        }
     
     // MARK:- Helper Methods
@@ -138,7 +145,12 @@ extension ListViewController: UISearchResultsUpdating {
 }
 
 extension ListViewController: SearchViewControllerDelegate {
-func pushVC(vc: UIViewController) {
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+func pushVC(result: Movie) {
+      let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as! MovieDetailViewController
+    network.getMovieById(movie: result, completion: {success in
+        if success {
+            vc.movie = self.network.movieById!
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    })    }
 }
