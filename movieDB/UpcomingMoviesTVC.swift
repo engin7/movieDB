@@ -10,14 +10,20 @@ import UIKit
 
 class UpcomingMoviesTableViewCell:UITableViewCell {
     
-    
-    
+    @IBOutlet weak var imageUpcoming: UIImageView!
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var detail: UILabel!
+    @IBOutlet weak var date: UILabel!
     
     override func awakeFromNib() {
-            super.awakeFromNib()
-            // Initialization code
-            self.contentView.isUserInteractionEnabled = true
-        }
+        super.awakeFromNib()
+        self.contentView.isUserInteractionEnabled = true
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+    }
     
     
 }

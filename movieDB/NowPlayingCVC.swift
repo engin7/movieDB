@@ -14,13 +14,13 @@ class NowPlayingCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var image: UIImageView!
     
     override func awakeFromNib() {
-            super.awakeFromNib()
-            self.contentView.isUserInteractionEnabled = true
-        }
-
+        super.awakeFromNib()
+        self.contentView.isUserInteractionEnabled = true
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
-       
+        
     }
     
     
