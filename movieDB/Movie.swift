@@ -26,11 +26,13 @@ struct Movie: Codable {
     var id                   = 0
     var backdropImagePath:   String?
     var tagline: String?
+    var imdb: String?
     
     enum CodingKeys: String, CodingKey {
         case posterImagePath = "poster_path"
         case backdropImagePath = "backdrop_path"
         case averageVote = "vote_average"
+        case imdb = "imdb_id"
         case title, overview, release_date, id
         case popularity, vote_count, tagline
      }
