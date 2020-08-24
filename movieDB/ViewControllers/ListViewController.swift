@@ -68,7 +68,8 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UITableVie
         )
     }
     
- 
+// TODO:- Refactor Network functions
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let nowPlaying = network.nowplayingMovies[indexPath.row]
@@ -98,11 +99,17 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UITableVie
         let result = NetworkManager.shared.upcomingMovies[indexPath.row]
         let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as! MovieDetailViewController
         
+        network.getSimilarMovie(movie: result, completion: {success in
+                   if success {
+                    vc.similarMovies = self.network.similarMovies
+                
+                   }
+               })
+        
         network.getMovieById(movie: result, completion: {success in
             if success {
                 vc.movie = self.network.movieById!
                 self.navigationController?.pushViewController(vc, animated: true)
-                
             }
         })
         
@@ -154,6 +161,14 @@ extension ListViewController: UISearchResultsUpdating {
 extension ListViewController: SearchViewControllerDelegate {
 func pushVC(result: Movie) {
       let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as! MovieDetailViewController
+    
+    network.getSimilarMovie(movie: result, completion: {success in
+                      if success {
+                       vc.similarMovies = self.network.similarMovies
+                   
+                      }
+                  })
+    
     network.getMovieById(movie: result, completion: {success in
         if success {
             vc.movie = self.network.movieById!
