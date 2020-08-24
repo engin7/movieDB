@@ -28,18 +28,16 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-         
         upcomingMovies.dataSource =  tableViewDataSource
         nowPlayingMovies.dataSource = collectionViewDataSource
-        
          
-        network.upcomingMovies(completion: {success in
+        network.getMovies(get: .upcoming, searchText: nil, movie: nil, completion: {success in
             if success {
                 self.upcomingMovies.reloadData()
              }
         })
         
-        network.nowplayingMovies(completion: {success in
+        network.getMovies(get: .nowplaying, searchText: nil, movie: nil, completion: {success in
             if success {
                 self.nowPlayingMovies.reloadData()
                 self.dots.numberOfPages = self.network.nowplayingMovies.count
@@ -76,14 +74,13 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UITableVie
         
         let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as! MovieDetailViewController
         
-         network.getSimilarMovie(movie: nowPlaying, completion: {success in
+         network.getMovies(get: .similar, searchText: nil, movie: nowPlaying, completion: {success in
              if success {
               vc.similarMovies = self.network.similarMovies
-          
              }
          })
         
-        network.getMovieById(movie: nowPlaying, completion: {success in
+        network.getMovies(get: .byId, searchText: nil, movie: nowPlaying, completion: {success in
                        if success {
                         vc.movie = self.network.movieById!
                         self.navigationController?.pushViewController(vc, animated: true)
@@ -99,14 +96,13 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UITableVie
         let result = NetworkManager.shared.upcomingMovies[indexPath.row]
         let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as! MovieDetailViewController
         
-        network.getSimilarMovie(movie: result, completion: {success in
+        network.getMovies(get: .similar, searchText: nil, movie: result, completion: {success in
                    if success {
                     vc.similarMovies = self.network.similarMovies
-                
                    }
                })
         
-        network.getMovieById(movie: result, completion: {success in
+         network.getMovies(get: .byId, searchText: nil, movie: result, completion: {success in
             if success {
                 vc.movie = self.network.movieById!
                 self.navigationController?.pushViewController(vc, animated: true)
@@ -132,7 +128,7 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UITableVie
 extension ListViewController: UISearchBarDelegate {
  
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        network.performSearch(searchText: searchBar.text!, completion: {success in
+        network.getMovies(get: .search, searchText: searchBar.text!, movie: nil, completion: {success in
             
             if !success {
                 self.showNetworkError()
@@ -162,14 +158,13 @@ extension ListViewController: SearchViewControllerDelegate {
 func pushVC(result: Movie) {
       let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as! MovieDetailViewController
     
-    network.getSimilarMovie(movie: result, completion: {success in
+    network.getMovies(get: .similar, searchText: nil, movie: result, completion: {success in
                       if success {
                        vc.similarMovies = self.network.similarMovies
-                   
                       }
                   })
     
-    network.getMovieById(movie: result, completion: {success in
+     network.getMovies(get: .byId, searchText: nil, movie: result, completion: {success in
         if success {
             vc.movie = self.network.movieById!
             self.navigationController?.pushViewController(vc, animated: true)

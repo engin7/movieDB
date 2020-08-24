@@ -65,26 +65,24 @@ class MovieDetailViewController: UIViewController, UICollectionViewDelegate, UIT
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
            
-           let selectedMovie = network.similarMovies[indexPath.row]
-           
-           let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as! MovieDetailViewController
-           
-            network.getSimilarMovie(movie: selectedMovie, completion: {success in
-                if success {
-                 vc.similarMovies = self.network.similarMovies
-             
-                }
-            })
-           
-           network.getMovieById(movie: selectedMovie, completion: {success in
-                          if success {
-                           vc.movie = self.network.movieById!
-                           self.navigationController?.pushViewController(vc, animated: true)
-                           
-                          }
-                      })
-
-       }
+        let selectedMovie = network.similarMovies[indexPath.row]
+        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as! MovieDetailViewController
+        
+        network.getMovies(get: .similar, searchText: nil, movie: selectedMovie, completion: {success in
+            if success {
+                vc.similarMovies = self.network.similarMovies
+                
+            }
+        })
+        
+         network.getMovies(get: .byId, searchText: nil, movie: selectedMovie, completion: {success in
+            if success {
+                vc.movie = self.network.movieById!
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        })
+    }
     
 
 }
