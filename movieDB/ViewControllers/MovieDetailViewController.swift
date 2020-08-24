@@ -41,7 +41,7 @@ class MovieDetailViewController: UIViewController, UICollectionViewDelegate, UIT
         
         if movie != nil {
             rating.text = String(movie!.averageVote)
-            let imageURL = URL(string: "http://image.tmdb.org/t/p/w500" + (movie!.posterImagePath))
+            let imageURL = URL(string: "http://image.tmdb.org/t/p/w342" + (movie!.posterImagePath))
             self.image.kf.setImage(with: imageURL)
         }
         

@@ -8,7 +8,6 @@
 
 import Alamofire
 
-// TODO:- Refactor Network functions
 
 class NetworkManager {
     
