@@ -22,8 +22,8 @@ class SimilarMoviesDataSource: NSObject, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SimilarMoviesViewCell
         
         cell.label.text = network.similarMovies[indexPath.row].title
-        
-        let imageURL = URL(string: "http://image.tmdb.org/t/p/w92" + network.nowplayingMovies[indexPath.row].posterImagePath)
+ 
+        let imageURL = URL(string: "http://image.tmdb.org/t/p/w92" + network.similarMovies[indexPath.row].posterImagePath)
         cell.image.kf.setImage(with: imageURL)
         
         return  cell
