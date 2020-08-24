@@ -22,6 +22,7 @@ private let nowplayingURL = "https://api.themoviedb.org/3/movie/now_playing"
 var upcomingMovies: [Movie] = []
 var nowplayingMovies:[Movie] = []
 var searchedMovies:[Movie] = []
+var similarMovies:[Movie] = []
 var movieById:Movie?
     
     typealias SearchComplete = (Bool) -> Void
@@ -84,7 +85,21 @@ var movieById:Movie?
             self.movieById = film
             completion(true)
         }
-        
     }
+    
+    func getSimilarMovie(movie: Movie,completion: @escaping SearchComplete) {
+           
+           let api = "/similar?api_key=" + apiKey! + "&language=en-US"
+           let url = byIdURL + "/" + String(movie.id) + api
+           
+           AF.request(url)
+           .validate()
+           .responseDecodable(of: ResultArray.self) { (response) in
+             guard let film = response.value else { return }
+            self.similarMovies = film.results
+               completion(true)
+           }
+       }
+    
     
 }

@@ -74,7 +74,15 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UITableVie
         let nowPlaying = network.nowplayingMovies[indexPath.row]
         
         let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as! MovieDetailViewController
- 
+        
+         network.getSimilarMovie(movie: nowPlaying, completion: {success in
+             if success {
+              vc.similarMovies = self.network.similarMovies
+            
+              
+             }
+         })
+        
         network.getMovieById(movie: nowPlaying, completion: {success in
                        if success {
                         vc.movie = self.network.movieById!

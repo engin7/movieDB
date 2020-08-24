@@ -31,8 +31,8 @@ struct Movie: Codable {
         case posterImagePath = "poster_path"
         case backdropImagePath = "backdrop_path"
         case averageVote = "vote_average"
-        case title, overview, release_date
-        case popularity, vote_count, id, tagline
+        case title, overview, release_date, id
+        case popularity, vote_count, tagline
      }
     
 }
