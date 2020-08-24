@@ -32,7 +32,6 @@ class MovieDetailViewController: UIViewController, UICollectionViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = collectionViewDataSource
-        collectionView.reloadData()
         self.title = movie?.title
         self.view.backgroundColor = .white
         overview.text = movie?.overview
@@ -54,11 +53,15 @@ class MovieDetailViewController: UIViewController, UICollectionViewDelegate, UIT
         imdb.attributedText = attributedString
     }
     
+    override func viewDidLayoutSubviews() {
+        collectionView.reloadData()
+    }
+    
+    
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         UIApplication.shared.open(URL)
         return false
     }
-    
-    
+
 }
 
