@@ -110,20 +110,16 @@
 			children = (
 				109BFB8524F0D8A7005AF007 /* AppDelegate.swift */,
 				109BFB8724F0D8A7005AF007 /* SceneDelegate.swift */,
-				109BFBA724F0DE10005AF007 /* NetworkManager.swift */,
-				109BFBB024F0F759005AF007 /* Movie.swift */,
-				109BFBB224F12540005AF007 /* UpcomingMoviesDS.swift */,
-				109BFBB624F16CA7005AF007 /* NowPlayingDS.swift */,
-				109BFBBA24F37202005AF007 /* SimilarMoviesDS.swift */,
-				109BFBB424F12948005AF007 /* UpcomingMoviesTVC.swift */,
-				109BFBB824F16DBD005AF007 /* NowPlayingCVC.swift */,
-				109BFBBC24F37525005AF007 /* SimilarMoviesCVC.swift */,
-				109BFB8B24F0D8A7005AF007 /* Main.storyboard */,
-				109BFBAD24F0DF45005AF007 /* ViewControllers */,
-				109BFB8E24F0D8B3005AF007 /* Assets.xcassets */,
 				109BFB9024F0D8B3005AF007 /* LaunchScreen.storyboard */,
 				109BFB9324F0D8B3005AF007 /* Info.plist */,
 				109BFBAE24F0F71E005AF007 /* keys.plist */,
+				109BFB8B24F0D8A7005AF007 /* Main.storyboard */,
+				109BFBA724F0DE10005AF007 /* NetworkManager.swift */,
+				109BFBB024F0F759005AF007 /* Movie.swift */,
+				109BFBAD24F0DF45005AF007 /* ViewControllers */,
+				109BFBBE24F46885005AF007 /* DataSources */,
+				109BFBBF24F468A0005AF007 /* Cells */,
+				109BFB8E24F0D8B3005AF007 /* Assets.xcassets */,
 			);
 			path = movieDB;
 			sourceTree = "<group>";
@@ -145,6 +141,26 @@
 				109BFBAB24F0DF38005AF007 /* MovieDetailViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		109BFBBE24F46885005AF007 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				109BFBB224F12540005AF007 /* UpcomingMoviesDS.swift */,
+				109BFBB624F16CA7005AF007 /* NowPlayingDS.swift */,
+				109BFBBA24F37202005AF007 /* SimilarMoviesDS.swift */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		109BFBBF24F468A0005AF007 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				109BFBB424F12948005AF007 /* UpcomingMoviesTVC.swift */,
+				109BFBB824F16DBD005AF007 /* NowPlayingCVC.swift */,
+				109BFBBC24F37525005AF007 /* SimilarMoviesCVC.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		5FE018C5C792BDEC9C77BD7F /* Frameworks */ = {
