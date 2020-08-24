@@ -13,7 +13,7 @@
 
 import UIKit
 
-class MovieDetailViewController: UIViewController, UICollectionViewDelegate {
+class MovieDetailViewController: UIViewController, UICollectionViewDelegate, UITextViewDelegate {
    
     private let network = NetworkManager.shared
     var movie  : Movie?
@@ -26,7 +26,7 @@ class MovieDetailViewController: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var rating: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var date: UILabel!
-    @IBOutlet weak var imdb: UILabel!
+    @IBOutlet weak var imdb: UITextView!
     
      
     override func viewDidLoad() {
@@ -45,7 +45,15 @@ class MovieDetailViewController: UIViewController, UICollectionViewDelegate {
             let imageURL = URL(string: "http://image.tmdb.org/t/p/w500" + (movie!.posterImagePath))
             self.image.kf.setImage(with: imageURL)
         }
-  
+        
+        let attributedString = NSMutableAttributedString(string: "IMDb")
+        attributedString.addAttribute(.link, value: "https://www.hackingwithswift.com", range: NSRange(location: 0, length: 4))
+        imdb.attributedText = attributedString
+    }
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        UIApplication.shared.open(URL)
+        return false
     }
     
     

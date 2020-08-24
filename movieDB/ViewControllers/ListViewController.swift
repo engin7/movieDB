@@ -78,8 +78,7 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UITableVie
          network.getSimilarMovie(movie: nowPlaying, completion: {success in
              if success {
               vc.similarMovies = self.network.similarMovies
-            
-              
+          
              }
          })
         

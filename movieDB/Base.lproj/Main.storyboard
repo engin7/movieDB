@@ -222,7 +222,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fj1-vw-eix">
-                                <rect key="frame" x="16" y="306" width="343" height="181"/>
+                                <rect key="frame" x="16" y="306" width="343" height="185"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -230,8 +230,8 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wj4-Hs-XBW">
-                                <rect key="frame" x="165" y="503" width="45" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="169" y="507" width="37.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -242,22 +242,28 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngu-3H-DV4">
-                                <rect key="frame" x="226" y="503" width="35" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="222.5" y="507" width="29" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IMDb" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uvx-QL-e2X">
-                                <rect key="frame" x="314" y="503" width="45" height="21"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3Df-Is-UCh">
+                                <rect key="frame" x="309" y="500" width="50" height="31"/>
+                                <color key="backgroundColor" red="1" green="0.9219285103" blue="0.52512307359999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="ThB-6k-VVd"/>
+                                    <constraint firstAttribute="width" constant="50" id="eM0-ZI-DA9"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="G5H-2O-0Nm" id="YIG-h4-WyO"/>
+                                </connections>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Uvx-QL-e2X" firstAttribute="centerY" secondItem="ngu-3H-DV4" secondAttribute="centerY" id="1d6-vM-yxT"/>
                             <constraint firstItem="Ctq-YL-tSa" firstAttribute="centerX" secondItem="1Xl-lk-wMi" secondAttribute="centerX" id="27G-G0-XUB"/>
                             <constraint firstItem="Fj1-vw-eix" firstAttribute="top" secondItem="Ctq-YL-tSa" secondAttribute="bottom" constant="16" id="2N0-Q4-2sO"/>
                             <constraint firstItem="r4w-Hf-60t" firstAttribute="leading" secondItem="iG0-dP-z3k" secondAttribute="leading" id="2bL-r0-ssS"/>
@@ -267,9 +273,9 @@
                             <constraint firstItem="24I-OZ-pyj" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hOs-Pe-EYM" secondAttribute="trailing" symbolic="YES" id="AJT-Bu-UNE"/>
                             <constraint firstItem="hOs-Pe-EYM" firstAttribute="leading" secondItem="Fj1-vw-eix" secondAttribute="leading" id="Bau-Ho-uLT"/>
                             <constraint firstItem="iG0-dP-z3k" firstAttribute="top" secondItem="hOs-Pe-EYM" secondAttribute="bottom" constant="8" id="FIC-zh-aCN"/>
+                            <constraint firstItem="24I-OZ-pyj" firstAttribute="trailing" secondItem="3Df-Is-UCh" secondAttribute="trailing" constant="16" id="IyB-eL-Dmk"/>
+                            <constraint firstItem="3Df-Is-UCh" firstAttribute="top" secondItem="Fj1-vw-eix" secondAttribute="bottom" constant="9" id="PmS-A8-W7f"/>
                             <constraint firstItem="Fj1-vw-eix" firstAttribute="leading" secondItem="24I-OZ-pyj" secondAttribute="leading" constant="16" id="ReV-zI-gUu"/>
-                            <constraint firstItem="24I-OZ-pyj" firstAttribute="trailing" secondItem="Uvx-QL-e2X" secondAttribute="trailing" constant="16" id="Wgg-OQ-UDH"/>
-                            <constraint firstItem="Uvx-QL-e2X" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ngu-3H-DV4" secondAttribute="trailing" constant="8" symbolic="YES" id="cqf-yY-3rx"/>
                             <constraint firstItem="24I-OZ-pyj" firstAttribute="trailing" secondItem="Fj1-vw-eix" secondAttribute="trailing" constant="16" id="d8y-UV-Mut"/>
                             <constraint firstItem="r4w-Hf-60t" firstAttribute="trailing" secondItem="24I-OZ-pyj" secondAttribute="trailing" id="f44-be-meh"/>
                             <constraint firstItem="iG0-dP-z3k" firstAttribute="bottom" secondItem="24I-OZ-pyj" secondAttribute="bottom" id="fOw-8F-7Ml"/>
@@ -278,6 +284,7 @@
                             <constraint firstItem="ngu-3H-DV4" firstAttribute="leading" secondItem="Wj4-Hs-XBW" secondAttribute="trailing" constant="16" id="own-3P-OL7"/>
                             <constraint firstItem="r4w-Hf-60t" firstAttribute="top" secondItem="24I-OZ-pyj" secondAttribute="top" id="qEx-qq-kDi"/>
                             <constraint firstItem="r4w-Hf-60t" firstAttribute="leading" secondItem="24I-OZ-pyj" secondAttribute="leading" id="qj5-xM-mnw"/>
+                            <constraint firstItem="3Df-Is-UCh" firstAttribute="centerY" secondItem="ngu-3H-DV4" secondAttribute="centerY" id="rr0-Ir-OBb"/>
                             <constraint firstItem="Ctq-YL-tSa" firstAttribute="top" secondItem="r4w-Hf-60t" secondAttribute="bottom" constant="16" id="tVq-QI-FyB"/>
                             <constraint firstItem="ngu-3H-DV4" firstAttribute="top" secondItem="Fj1-vw-eix" secondAttribute="bottom" constant="16" id="zmE-wB-Mve"/>
                         </constraints>
@@ -287,7 +294,7 @@
                         <outlet property="collectionView" destination="iG0-dP-z3k" id="dfl-7w-dkO"/>
                         <outlet property="date" destination="ngu-3H-DV4" id="zYs-pb-rS7"/>
                         <outlet property="image" destination="r4w-Hf-60t" id="JnB-vq-z4G"/>
-                        <outlet property="imdb" destination="Uvx-QL-e2X" id="ZFA-k7-NRh"/>
+                        <outlet property="imdb" destination="3Df-Is-UCh" id="hIr-UZ-p3P"/>
                         <outlet property="overview" destination="Fj1-vw-eix" id="ALS-Iq-asH"/>
                         <outlet property="rating" destination="Wj4-Hs-XBW" id="h2A-RX-lsZ"/>
                         <outlet property="tagline" destination="Ctq-YL-tSa" id="ozP-A3-bhs"/>
