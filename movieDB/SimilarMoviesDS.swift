@@ -17,11 +17,14 @@ class SimilarMoviesDataSource: NSObject, UICollectionViewDataSource {
        }
     
     
-func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SimilarMoviesViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SimilarMoviesViewCell
         
         cell.label.text = network.similarMovies[indexPath.row].title
+        
+        let imageURL = URL(string: "http://image.tmdb.org/t/p/w92" + network.nowplayingMovies[indexPath.row].posterImagePath)
+        cell.image.kf.setImage(with: imageURL)
         
         return  cell
         

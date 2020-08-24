@@ -48,9 +48,10 @@ class MovieDetailViewController: UIViewController, UICollectionViewDelegate, UIT
         
         let attributedString = NSMutableAttributedString(string: "IMDb")
         attributedString.addAttribute(.link, value: "https://www.imdb.com/title/" + (movie?.imdb ?? ""), range: NSRange(location: 0, length: 4))
+        let boldFont = UIFont(name: "Helvetica-bold", size: 16.0) as Any
+        attributedString.addAttribute(NSAttributedString.Key.font, value: boldFont, range: NSRange(location: 0, length: 4))
+        imdb.linkTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         imdb.attributedText = attributedString
-        imdb.linkTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Helvetica-Bold", size: 18.0)!]
-
     }
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
